@@ -1,0 +1,101 @@
+package trinad.com;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Exampleservlet
+ */
+@WebServlet("/Exampleservlet")
+public class Exampleservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Exampleservlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter pw=response.getWriter();
+		/*int num1=0;
+		if(request.getParameter("num1")!=null) {
+			Integer.parseInt(request.getParameter("num1"));
+		}
+		int num2=0;
+		if(request.getParameter("num2")!=null) {
+			Integer.parseInt(request.getParameter("num2"));
+		}*/
+		int num1= Integer.parseInt(request.getParameter("num1"));
+        int num2= Integer.parseInt(request.getParameter("num2"));
+        String num3=request.getParameter("num3");
+        String num4=request.getParameter("countries");
+        
+		String out="<html>\r\n"
+				+"<body>\r\n"
+				+"<h1>some Html to render</h1>\r\n"
+				+(num1+num2)
+				+"</br>"
+				+num3
+				+"</br>"
+				+num4
+				+"</body>\r\n"
+				+"</html>";
+		pw.append(out);
+		
+				
+				
+				
+				
+		
+				
+		
+		
+				
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="http://localhost:8081/seconproject/Exampleservlet" method="post">
+<input type="text" name="num1"/>
+<input type="text" name="num2"/>
+<input type="checkbox" name="num3"/>
+<select name="countries">
+<option>India</option>
+<option>Australia</option>
+<option>Iceland</option>
+<option>Japan</option>
+</select>
+<input  type="radio" name="language">
+<label >java</label>
+<input type="submit"/>
+</form>
+</body>
+</html>
